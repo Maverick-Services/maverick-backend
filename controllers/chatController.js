@@ -2,7 +2,7 @@ const axios = require('axios'); // Import axios for making HTTP requests
 const Chat = require('../models/chatModel'); // Import the chat model
 
 // Configuration for retries and delays
-const RETRY_COUNT = process.env.RETRY_COUNT || 5; // Default: 3 retries
+const RETRY_COUNT = process.env.RETRY_COUNT || 3; // Default: 3 retries
 const RETRY_DELAY = process.env.RETRY_DELAY || 1000; // Default: 1 second delay
 
 // Circuit breaker state
