@@ -2,7 +2,7 @@ const axios = require('axios'); // Import axios for making HTTP requests
 const Chat = require('../models/chatModel'); // Import the chat model
 
 // Configuration for retries and delays
-const RETRY_COUNT = process.env.RETRY_COUNT || 3; // Default: 3 retries
+const RETRY_COUNT = process.env.RETRY_COUNT || 5; // Default: 3 retries
 const RETRY_DELAY = process.env.RETRY_DELAY || 1000; // Default: 1 second delay
 
 // Circuit breaker state
@@ -14,7 +14,7 @@ const retryAxios = async (url, data, retries = RETRY_COUNT, delay = RETRY_DELAY)
 
   for (let i = 0; i < retries; i++) {
     try {
-      return await axios.post(url, data, { timeout: 30000 }); // 10-second timeout
+      return await axios.post(url, data, { timeout: 30000 }); 
     } catch (error) {
       console.warn(`Retry ${i + 1}/${retries} failed:`, error.message);
       if (i < retries - 1) await new Promise((resolve) => setTimeout(resolve, delay * (i + 1)));
