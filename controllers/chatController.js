@@ -52,7 +52,7 @@ exports.handleChat = async (req, res) => {
       });
 
       // Save the chat to the database
-      await newChat.save();
+      // await newChat.save();
     }
 
     // Send the response back to the frontend
